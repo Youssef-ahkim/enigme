@@ -1,0 +1,140 @@
+<!-- chatgbt made this -->
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enigme Telecom — Solution Télécommunication</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* small custom styles to complement Tailwind */
+    .brand-blue { background-color: #0b63b3; }
+    .soft-hex { background-image: radial-gradient(circle at 10% 20%, rgba(11,99,179,0.06), transparent 20%), linear-gradient(180deg, rgba(11,99,179,0.02), transparent); }
+    /* ensure flyer-like fonts and spacing */
+    @media (min-width: 1024px) {
+      .hero-height { height: 520px; }
+    }
+  </style>
+</head>
+<body class="antialiased text-gray-800 bg-white">
+  <!-- top navigation / header -->
+  <header class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <!-- logo placeholder (replace src with your logo file) -->
+      <img src="logo.png" alt="Enigme Telecom" class="h-12 w-12 object-contain" onerror="this.style.display='none'" />
+      <div>
+        
+        <p class="text-sm text-gray-500">Votre solution entreprises de télécommunication</p>
+      </div>
+    </div>
+    <nav class="hidden md:flex gap-6 text-sm text-gray-600">
+      <a href="#a-propos" class="hover:text-blue-600">A propos</a>
+      <a href="#services" class="hover:text-blue-600">Nos métiers</a>
+      <a href="#contact" class="hover:text-blue-600">Contact</a>
+    </nav>
+    <button id="menuBtn" class="md:hidden p-2 rounded-md border">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </header>
+
+  <!-- hero / flyer header -->
+  <section class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+    <div class="lg:col-span-1 brand-blue text-white rounded-lg p-8 flex flex-col justify-center hero-height">
+      <h2 class="text-3xl font-extrabold tracking-tight">VOTRE SOLUTION<br/>ENTREPRISES DE<br/>TELECOMMUNICATION</h2>
+    </div>
+
+    <div class="lg:col-span-2 relative rounded-lg overflow-hidden soft-hex">
+      <!-- large hero image: replace the src below with your high-res image path -->
+      <img src="/assets/hero-telecom.jpg" alt="Télécommunication" class="w-full h-full object-cover min-h-[300px]" onerror="this.style.objectPosition='center'; this.style.backgroundColor='#e6eef9'" />
+    </div>
+  </section>
+
+  <!-- about and small gallery -->
+  <main class="max-w-6xl mx-auto px-6 mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <article id="a-propos" class="lg:col-span-2 bg-white p-6 rounded-lg shadow-sm">
+      <h3 class="text-2xl font-bold text-gray-800">A propos de</h3>
+      <p class="mt-3 text-gray-600 leading-relaxed">Enigme Telecom est une entreprise experte en <span class="font-medium">technologies de l'information et de la communication</span>. Acteur pionnier dans le domaine de la téléphonie, elle offre à chaque client des solutions informatiques parfaitement adaptées à ses besoins, tout en garantissant un service après-vente d'excellence.</p>
+
+      <div class="mt-6 border-t pt-4">
+        <h4 class="text-xl font-semibold text-blue-700">Nos Métiers</h4>
+        <ul id="services" class="mt-3 space-y-3 text-gray-700">
+          <li>• Solution télécommunication</li>
+          <li>• Installation téléphonique, Téléphonie IP, Câblage téléphonique</li>
+          <li>• Installation des équipements standard, de télésurveillance et audiovisuel</li>
+          <li>• Achat et vente de matériels de télécommunication</li>
+          <li>• Commercialisation de logiciels et accessoires informatique</li>
+          <li>• Soumission au marché privé et public de télécommunication</li>
+          <li>• Installation de dispositif d'alarme et pare-feu</li>
+        </ul>
+      </div>
+    </article>
+
+    <aside class="lg:col-span-1 flex flex-col gap-4">
+      <!-- small gallery that mimics flyer images -->
+      <img src="/assets/gallery-1.jpg" alt="Câblage" class="w-full h-40 object-cover rounded-lg shadow-sm" />
+      <img src="/assets/gallery-2.jpg" alt="Antenne" class="w-full h-40 object-cover rounded-lg shadow-sm" />
+      <div class="bg-white rounded-lg p-4 shadow-sm flex items-center gap-3">
+        <div class="flex-1">
+          <p class="text-sm text-gray-600">Contactez-nous</p>
+          <p class="text-lg font-semibold text-gray-800">06 61 07 89 48</p>
+          <p class="text-sm text-gray-500">enigmetelecom.5g@gmail.com</p>
+          <p class="text-sm text-gray-500">www.enigmetelecom.ma</p>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- features / icons strip -->
+  <section class="max-w-6xl mx-auto px-6 mt-8">
+    <div class="bg-white rounded-lg p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-start gap-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v4a1 1 0 001 1h3m10-6v6a1 1 0 01-1 1h-3m-6 4h6"/></svg>
+        <div>
+          <h5 class="font-semibold">Support & Maintenance</h5>
+          <p class="text-sm text-gray-500">Service après-vente d'excellence</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3"/></svg>
+        <div>
+          <h5 class="font-semibold">Solutions sur-mesure</h5>
+          <p class="text-sm text-gray-500">Adaptées aux besoins de chaque client</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4l3 8 4-16 3 8h4"/></svg>
+        <div>
+          <h5 class="font-semibold">Matériels & Vente</h5>
+          <p class="text-sm text-gray-500">Gamme complète de matériels telecom</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer contact strip -->
+  <footer id="contact" class="mt-10 bg-gray-900 text-white">
+    <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l1.5-1.5M21 14l-1.5 1.5M12 3v2M12 21v-2"/></svg>
+        <div>
+          <p class="text-sm">06 61 07 89 48</p>
+          <p class="text-sm">enigmetelecom.5g@gmail.com</p>
+        </div>
+      </div>
+      <div class="text-sm">© <span id="year"></span> Enigme Telecom — Tous droits réservés</div>
+    </div>
+  </footer>
+
+  <script>
+    // small interactive bits
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById('menuBtn');
+    menuBtn && menuBtn.addEventListener('click', () => {
+      alert('Menu mobile — replace with your mobile nav logic');
+    });
+  </script>
+</body>
+</html>
