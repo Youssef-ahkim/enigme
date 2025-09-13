@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Enigme Telecom - Solutions de Télécommunication d'Entreprise</title>
     <meta name="description" content="Enigme Telecom, expert en technologies de l'information et de la communication. Solutions informatiques et de télécommunication sur-mesure.">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,41 +24,41 @@
             --light: #f8fafc;
             --gray: #94a3b8;
         }
-        
+       
+        /* --- CHANGE: Added to remove overscroll bounce and offset for fixed header --- */
         html {
             overscroll-behavior: none;
             scroll-padding-top: 5rem; /* Adjust based on your actual header height */
-            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--dark);
             color: var(--light);
-            /* --- CHANGE: Added to prevent horizontal scrollbars --- */
             overflow-x: hidden;
+            -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
         }
-        
+       
         .gradient-bg {
             background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
         }
-        
+       
         .hero-gradient {
             background: linear-gradient(135deg, rgba(37, 99, 235, 0.8) 0%, rgba(126, 34, 206, 0.8) 100%);
         }
-        
+       
         .card-gradient {
             background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
+       
         /* Custom Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-        
+       
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
@@ -68,15 +68,15 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+       
         .animate-float {
             animation: float 5s ease-in-out infinite;
         }
-        
+       
         .animate-pulse-slow {
             animation: pulse 3s ease-in-out infinite;
         }
-        
+       
         /* Glow effect */
         .glow {
             box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
@@ -85,12 +85,12 @@
         .glow:hover, .glow:focus {
             box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
         }
-        
+       
         /* Navigation styling */
         .nav-link {
             position: relative;
         }
-        
+       
         .nav-link::after {
             content: '';
             position: absolute;
@@ -101,7 +101,7 @@
             background: var(--primary);
             transition: width 0.3s ease;
         }
-        
+       
         .nav-link:hover::after, .nav-link:focus::after {
             width: 100%;
         }
@@ -112,37 +112,36 @@
             -webkit-backdrop-filter: blur(8px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
-        
+       
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
-        
+       
         ::-webkit-scrollbar-track {
             background: var(--dark);
         }
-        
+       
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
             border-radius: 4px;
         }
-        
+       
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-dark);
         }
-        
+       
         /* Particle background */
         .particles-container {
             position: absolute;
-            /* --- CHANGE: Ensured container does not overflow horizontally --- */
-            width: 100%; 
-            overflow-x: hidden;
+            width: 100%;
             height: 100%;
             top: 0;
             left: 0;
             z-index: 0;
+            overflow: hidden;
         }
-        
+       
         .particle {
             position: absolute;
             background: rgba(37, 99, 235, 0.5);
@@ -150,13 +149,13 @@
             opacity: 0;
             animation: float 5s ease-in-out infinite, fadeIn 2s ease forwards;
         }
-        
+       
         .mobile-menu {
             position: fixed;
             top: 0;
             right: 0;
-             /* --- CHANGE: Using 100vw ensures it covers the full viewport width consistently --- */
-            width: 100vw;
+            /* --- CHANGE: Replaced 100vw to prevent horizontal overflow issues --- */
+            width: 100%;
             height: 100vh;
             background: rgba(15, 23, 42, 0.98);
             backdrop-filter: blur(5px);
@@ -164,29 +163,96 @@
             transform: translateX(100%);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+       
         @media (min-width: 640px) {
             .mobile-menu {
                 width: 320px;
             }
         }
-        
+       
         .mobile-menu.open {
             transform: translateX(0);
+        }
+
+        /* Mobile-specific fixes */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem !important;
+            }
+            
+            .section-padding {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+            
+            .container-padding {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+            }
+            
+            .stats-item {
+                padding: 1rem !important;
+            }
+            
+            .stats-number {
+                font-size: 1.875rem !important;
+            }
+            
+            .service-card {
+                padding: 1.5rem !important;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            
+            .btn-mobile {
+                padding: 0.75rem 1rem !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .text-mobile-lg {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-mobile-xl {
+                font-size: 1.75rem !important;
+            }
+        }
+
+        /* Prevent horizontal overflow */
+        .overflow-fix {
+            overflow-x: hidden;
         }
     </style>
 </head>
 
-<body class="gradient-bg">
+<body class="gradient-bg overflow-fix">
     <div class="particles-container" id="particles"></div>
-    
+   
     <header id="header" class="fixed w-full z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4">
+        <div class="container mx-auto px-4 container-padding">
             <div class="flex items-center justify-between">
                 <a href="#" class="flex items-center space-x-3">
                     <img src="logo.jpeg" class="h-10 sm:h-12 w-auto object-contain" alt="Enigme Telecom Logo">
                 </a>
-                
+               
                 <nav class="hidden lg:flex items-center space-x-10">
                     <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 font-medium">À propos</a>
                     <a href="#services" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 font-medium">Nos Métiers</a>
@@ -228,26 +294,26 @@
             <div class="absolute inset-0 z-0 overflow-hidden">
                 <div class="absolute inset-0 bg-[url('bg.png')] bg-cover bg-center mix-blend-overlay"></div>
             </div>
-            
-            <div class="container mx-auto px-6 relative z-10">
+           
+            <div class="container mx-auto px-4 container-padding relative z-10">
                 <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6" data-aos="fade-down" style="text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                    <h1 class="text-3xl md:text-6xl font-extrabold leading-tight mb-6 hero-title" data-aos="fade-down" style="text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
                         Solutions de <span class="text-blue-400">Télécommunication</span> pour Entreprises
                     </h1>
-                    <p class="text-xl md:text-2xl text-gray-200 mb-10" data-aos="fade-down" data-aos-delay="200">
+                    <p class="text-lg md:text-2xl text-gray-200 mb-10 hero-subtitle" data-aos="fade-down" data-aos-delay="200">
                         Des solutions informatiques et de communication sur-mesure pour propulser votre entreprise vers l'avenir.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
-                        <a href="#services" class="bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-800 transition-all duration-300 ease-in-out transform hover:scale-105 glow">
+                        <a href="#services" class="bg-blue-700 text-white px-6 py-3 rounded-lg text-base font-semibold hover:bg-blue-800 transition-all duration-300 ease-in-out transform hover:scale-105 glow btn-mobile">
                             Découvrir nos services
                         </a>
-                        <a href="#contact" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
+                        <a href="#contact" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg text-base font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 btn-mobile">
                             Nous contacter
                         </a>
                     </div>
                 </div>
             </div>
-            
+           
             <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
                 <a href="#about" aria-label="Scroll down to about section" class="text-white text-4xl">
                     <i class="fas fa-chevron-down"></i>
@@ -255,37 +321,37 @@
             </div>
         </section>
 
-        <section id="about" class="py-20 lg:py-24 relative overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16" data-aos="fade-up">
+        <section id="about" class="py-16 lg:py-20 relative overflow-hidden section-padding">
+            <div class="container mx-auto px-4 container-padding">
+                <div class="text-center mb-12" data-aos="fade-up">
                     <span class="text-blue-400 font-bold text-sm uppercase tracking-wider">À propos de nous</span>
-                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Expertise et Innovation au Service de votre Communication</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold mt-2 mb-4 text-mobile-xl">Expertise et Innovation au Service de votre Communication</h2>
                     <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
                 </div>
-                
-                <div class="grid md:grid-cols-2 gap-16 items-center">
+               
+                <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="relative" data-aos="fade-right" data-aos-duration="1000">
                         <div class="rounded-xl overflow-hidden glow transform hover:scale-105 transition-transform duration-500">
-                            <img src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                            <img src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                                  alt="Data center server room" class="w-full h-full object-cover">
                         </div>
                         <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-blue-600 rounded-lg -z-10 animate-float"></div>
                         <div class="absolute -top-6 -right-6 w-32 h-32 bg-purple-600 rounded-lg -z-10 animate-float" style="animation-delay: 2s;"></div>
                     </div>
-                    
+                   
                     <div data-aos="fade-left" data-aos-duration="1000">
-                        <h3 class="text-2xl md:text-3xl font-bold mb-6">Votre Partenaire de Confiance en Télécommunications</h3>
+                        <h3 class="text-xl md:text-3xl font-bold mb-6 text-mobile-lg">Votre Partenaire de Confiance en Télécommunications</h3>
                         <p class="text-gray-300 leading-relaxed mb-6">
-                            Enigme Telecom est une entreprise experte en technologies de l'information et de la communication. 
-                            Acteur pionnier dans le domaine de la téléphonie, elle offre à chaque client des solutions informatiques 
+                            Enigme Telecom est une entreprise experte en technologies de l'information et de la communication.
+                            Acteur pionnier dans le domaine de la téléphonie, elle offre à chaque client des solutions informatiques
                             parfaitement adaptées à ses besoins, tout en garantissant un service après-vente d'excellence.
                         </p>
                         <p class="text-gray-300 leading-relaxed mb-8">
-                            Notre mission est de fournir des infrastructures de communication fiables, sécurisées et performantes 
+                            Notre mission est de fournir des infrastructures de communication fiables, sécurisées et performantes
                             qui soutiennent la croissance et l'efficacité de nos clients.
                         </p>
-                        
-                        <div class="grid grid-cols-2 gap-6">
+                       
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="flex items-center">
                                 <i class="fas fa-check-circle text-blue-400 text-2xl mr-4"></i>
                                 <span class="text-gray-200">Solutions sur-mesure</span>
@@ -308,41 +374,41 @@
             </div>
         </section>
 
-        <section id="stats" class="py-16 bg-gray-900 relative">
+        <section id="stats" class="py-12 bg-gray-900 relative section-padding">
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80')] bg-cover bg-center opacity-10"></div>
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    <div class="p-6">
-                        <div class="text-blue-400 text-4xl md:text-5xl font-bold mb-2" id="clients-count">0</div>
+            <div class="container mx-auto px-4 container-padding relative z-10">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center stats-grid">
+                    <div class="p-4 stats-item">
+                        <div class="text-blue-400 text-3xl md:text-5xl font-bold mb-2 stats-number" id="clients-count">0</div>
                         <div class="text-gray-400 uppercase text-sm tracking-wider">Clients satisfaits</div>
                     </div>
-                    <div class="p-6">
-                        <div class="text-blue-400 text-4xl md:text-5xl font-bold mb-2" id="projects-count">0</div>
+                    <div class="p-4 stats-item">
+                        <div class="text-blue-400 text-3xl md:text-5xl font-bold mb-2 stats-number" id="projects-count">0</div>
                         <div class="text-gray-400 uppercase text-sm tracking-wider">Projets réalisés</div>
                     </div>
-                    <div class="p-6">
-                        <div class="text-blue-400 text-4xl md:text-5xl font-bold mb-2" id="experience-count">0</div>
+                    <div class="p-4 stats-item">
+                        <div class="text-blue-400 text-3xl md:text-5xl font-bold mb-2 stats-number" id="experience-count">0</div>
                         <div class="text-gray-400 uppercase text-sm tracking-wider">Ans d'expérience</div>
                     </div>
-                    <div class="p-6">
-                        <div class="text-blue-400 text-4xl md:text-5xl font-bold mb-2" id="partners-count">0</div>
+                    <div class="p-4 stats-item">
+                        <div class="text-blue-400 text-3xl md:text-5xl font-bold mb-2 stats-number" id="partners-count">0</div>
                         <div class="text-gray-400 uppercase text-sm tracking-wider">Partenaires</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="py-20 lg:py-24 relative">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16" data-aos="fade-up">
+        <section id="services" class="py-16 lg:py-20 relative section-padding">
+            <div class="container mx-auto px-4 container-padding">
+                <div class="text-center mb-12" data-aos="fade-up">
                     <span class="text-blue-400 font-bold text-sm uppercase tracking-wider">Nos Métiers</span>
-                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Un Éventail Complet de Solutions de Communication</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold mt-2 mb-4 text-mobile-xl">Un Éventail Complet de Solutions de Communication</h2>
                     <p class="text-gray-400 max-w-2xl mx-auto">Nous proposons une gamme complète de services pour répondre à tous vos besoins en télécommunications et informatique.</p>
                     <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card-gradient rounded-xl p-8 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-aos="fade-up">
+               
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="card-gradient rounded-xl p-6 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer service-card" data-aos="fade-up">
                         <div class="text-blue-400 text-4xl mb-6"><i class="fas fa-network-wired"></i></div>
                         <h3 class="text-xl font-bold mb-4">Solutions Télécommunication</h3>
                         <p class="text-gray-400 mb-6">Stratégies et infrastructures complètes pour optimiser vos communications internes et externes.</p>
@@ -350,8 +416,8 @@
                             En savoir plus <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
-                    
-                    <div class="card-gradient rounded-xl p-8 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                   
+                    <div class="card-gradient rounded-xl p-6 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer service-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="text-blue-400 text-4xl mb-6"><i class="fas fa-phone-alt"></i></div>
                         <h3 class="text-xl font-bold mb-4">Téléphonie IP & Câblage</h3>
                         <p class="text-gray-400 mb-6">Installation et maintenance de systèmes de téléphonie IP modernes et câblage structuré.</p>
@@ -359,8 +425,8 @@
                             En savoir plus <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
-                    
-                    <div class="card-gradient rounded-xl p-8 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+                   
+                    <div class="card-gradient rounded-xl p-6 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer service-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="text-blue-400 text-4xl mb-6"><i class="fas fa-video"></i></div>
                         <h3 class="text-xl font-bold mb-4">Vidéosurveillance & Audiovisuel</h3>
                         <p class="text-gray-400 mb-6">Solutions de sécurité par vidéosurveillance et équipements audiovisuels pour vos espaces professionnels.</p>
@@ -368,8 +434,8 @@
                             En savoir plus <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
-                    
-                    <div class="card-gradient rounded-xl p-8 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-aos="fade-up">
+                   
+                    <div class="card-gradient rounded-xl p-6 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer service-card" data-aos="fade-up">
                         <div class="text-blue-400 text-4xl mb-6"><i class="fas fa-server"></i></div>
                         <h3 class="text-xl font-bold mb-4">Vente de Matériel & Logiciels</h3>
                         <p class="text-gray-400 mb-6">Achat et vente de matériels de télécommunication, logiciels et accessoires informatiques de pointe.</p>
@@ -377,8 +443,8 @@
                             En savoir plus <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
-                    
-                    <div class="card-gradient rounded-xl p-8 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                   
+                    <div class="card-gradient rounded-xl p-6 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer service-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="text-blue-400 text-4xl mb-6"><i class="fas fa-shield-alt"></i></div>
                         <h3 class="text-xl font-bold mb-4">Alarme & Pare-feu</h3>
                         <p class="text-gray-400 mb-6">Installation de dispositifs d'alarme anti-intrusion et de pare-feu pour une sécurité maximale.</p>
@@ -386,8 +452,8 @@
                             En savoir plus <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
-                    
-                    <div class="card-gradient rounded-xl p-8 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+                   
+                    <div class="card-gradient rounded-xl p-6 transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer service-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="text-blue-400 text-4xl mb-6"><i class="fas fa-file-contract"></i></div>
                         <h3 class="text-xl font-bold mb-4">Marchés Publics & Privés</h3>
                         <p class="text-gray-400 mb-6">Accompagnement et soumission aux appels d'offres sur les marchés privés et publics.</p>
@@ -399,34 +465,34 @@
             </div>
         </section>
 
-        <section id="why-us" class="py-20 lg:py-24 bg-gray-900 relative">
+        <section id="why-us" class="py-16 lg:py-20 bg-gray-900 relative section-padding">
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80')] bg-cover bg-center opacity-5"></div>
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="text-center mb-16" data-aos="fade-up">
+            <div class="container mx-auto px-4 container-padding relative z-10">
+                <div class="text-center mb-12" data-aos="fade-up">
                     <span class="text-blue-400 font-bold text-sm uppercase tracking-wider">Nos Atouts</span>
-                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Pourquoi Nous Choisir ?</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold mt-2 mb-4 text-mobile-xl">Pourquoi Nous Choisir ?</h2>
                     <p class="text-gray-400 max-w-2xl mx-auto">Découvrez les avantages qui font de nous le partenaire idéal pour vos projets de télécommunication.</p>
                     <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-gray-800 rounded-xl p-8 text-center transform hover:-translate-y-2 transition-transform duration-300" data-aos="zoom-in-up">
+               
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-800 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-transform duration-300" data-aos="zoom-in-up">
                         <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-900 rounded-full mb-6">
                             <i class="fas fa-cogs text-blue-400 text-2xl"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-4">Solutions Sur-Mesure</h3>
                         <p class="text-gray-400">Nous analysons vos besoins spécifiques pour développer des solutions personnalisées et évolutives.</p>
                     </div>
-                    
-                    <div class="bg-gray-800 rounded-xl p-8 text-center transform hover:-translate-y-2 transition-transform duration-300" data-aos="zoom-in-up" data-aos-delay="100">
+                   
+                    <div class="bg-gray-800 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-transform duration-300" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-900 rounded-full mb-6">
                             <i class="fas fa-users text-blue-400 text-2xl"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-4">Expertise Technique</h3>
                         <p class="text-gray-400">Notre équipe est composée de professionnels qualifiés et passionnés par les nouvelles technologies.</p>
                     </div>
-                    
-                    <div class="bg-gray-800 rounded-xl p-8 text-center transform hover:-translate-y-2 transition-transform duration-300" data-aos="zoom-in-up" data-aos-delay="200">
+                   
+                    <div class="bg-gray-800 rounded-xl p-6 text-center transform hover:-translate-y-2 transition-transform duration-300" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-900 rounded-full mb-6">
                             <i class="fas fa-headset text-blue-400 text-2xl"></i>
                         </div>
@@ -437,49 +503,49 @@
             </div>
         </section>
 
-        <section id="contact" class="py-20 lg:py-24 relative">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16" data-aos="fade-up">
+        <section id="contact" class="py-16 lg:py-20 relative section-padding">
+            <div class="container mx-auto px-4 container-padding">
+                <div class="text-center mb-12" data-aos="fade-up">
                     <span class="text-blue-400 font-bold text-sm uppercase tracking-wider">Contactez-nous</span>
-                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Prêt à Transformer Votre Communication ?</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold mt-2 mb-4 text-mobile-xl">Prêt à Transformer Votre Communication ?</h2>
                     <p class="text-gray-400 max-w-2xl mx-auto">Notre équipe est à votre disposition pour discuter de vos besoins et vous proposer la solution idéale.</p>
                     <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
                 </div>
-                
-                <div class="grid lg:grid-cols-2 gap-12 bg-gray-800 p-8 md:p-12 rounded-xl card-gradient">
+               
+                <div class="grid lg:grid-cols-2 gap-8 bg-gray-800 p-6 md:p-8 rounded-xl card-gradient contact-grid">
                     <div data-aos="fade-right">
-                        <h3 class="text-2xl font-bold mb-6">Envoyez-nous un message</h3>
+                        <h3 class="text-xl font-bold mb-6">Envoyez-nous un message</h3>
                         <form id="contact-form" class="space-y-6">
                             <div>
                                 <label for="name" class="sr-only">Nom complet</label>
-                                <input type="text" id="name" name="name" required placeholder="Nom complet" 
-                                       class="w-full px-5 py-4 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400 transition-shadow">
+                                <input type="text" id="name" name="name" required placeholder="Nom complet"
+                                       class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400 transition-shadow">
                             </div>
                             <div>
                                 <label for="email" class="sr-only">Adresse e-mail</label>
-                                <input type="email" id="email" name="email" required placeholder="Adresse e-mail" 
-                                       class="w-full px-5 py-4 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400 transition-shadow">
+                                <input type="email" id="email" name="email" required placeholder="Adresse e-mail"
+                                       class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400 transition-shadow">
                             </div>
                             <div>
                                 <label for="message" class="sr-only">Votre message</label>
-                                <textarea id="message" name="message" rows="5" required placeholder="Votre message" 
-                                          class="w-full px-5 py-4 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400 transition-shadow"></textarea>
+                                <textarea id="message" name="message" rows="5" required placeholder="Votre message"
+                                          class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400 transition-shadow"></textarea>
                             </div>
                             <div>
-                                <button type="submit" class="w-full bg-blue-700 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 ease-in-out transform hover:scale-105 glow">
+                                <button type="submit" class="w-full bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 ease-in-out transform hover:scale-105 glow">
                                     Envoyer le message
                                 </button>
                             </div>
                             <p id="form-status" class="text-center mt-4 h-6"></p>
                         </form>
                     </div>
-                    
+                   
                     <div class="space-y-8" data-aos="fade-left">
                         <div>
-                            <h3 class="text-2xl font-bold mb-6">Nos Coordonnées</h3>
+                            <h3 class="text-xl font-bold mb-6">Nos Coordonnées</h3>
                             <p class="text-gray-400 mb-8">N'hésitez pas à nous contacter par téléphone, email ou via nos réseaux sociaux.</p>
                         </div>
-                        
+                       
                         <div class="flex items-start">
                             <i class="fas fa-phone text-blue-400 text-xl mr-4 mt-1"></i>
                             <div>
@@ -487,7 +553,7 @@
                                 <a href="tel:0661078948" class="text-gray-400 hover:text-blue-400 transition-colors">06 61 07 89 48</a>
                             </div>
                         </div>
-                        
+                       
                         <div class="flex items-start">
                             <i class="fas fa-envelope text-blue-400 text-xl mr-4 mt-1"></i>
                             <div>
@@ -495,7 +561,7 @@
                                 <a href="mailto:enigmetelecom.5g@gmail.com" class="text-gray-400 hover:text-blue-400 transition-colors">enigmetelecom.5g@gmail.com</a>
                             </div>
                         </div>
-                        
+                       
                         <div class="flex items-start">
                            <i class="fas fa-globe text-blue-400 text-xl mr-4 mt-1"></i>
                             <div>
@@ -503,14 +569,14 @@
                                 <a href="https://www.enigmetelecom.ma" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 transition-colors">www.enigmetelecom.ma</a>
                             </div>
                         </div>
-                        
+                       
                         <div class="pt-4">
                             <h4 class="font-semibold text-lg mb-4">Suivez-nous</h4>
                             <div class="flex space-x-4">
-                                <a href="#" aria-label="Facebook" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-blue-700 transition-colors"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" aria-label="Twitter" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-blue-500 transition-colors"><i class="fab fa-twitter"></i></a>
-                                <a href="#" aria-label="Instagram" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-purple-600 transition-colors"><i class="fab fa-instagram"></i></a>
-                                <a href="#" aria-label="LinkedIn" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-blue-800 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-blue-700 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-blue-500 transition-colors"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-purple-600 transition-colors"><i class="fab fa-instagram"></i></a>
+                                <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-blue-800 transition-colors"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                     </div>
@@ -519,14 +585,14 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 pt-16 pb-8 relative">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <footer class="bg-gray-900 pt-12 pb-8 relative">
+        <div class="container mx-auto px-4 container-padding">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 footer-grid">
                 <div>
                     <h3 class="text-lg font-bold mb-4">ENIGME TELECOM</h3>
                     <p class="text-gray-400 mb-6">Votre partenaire de confiance pour des solutions de télécommunication innovantes et performantes.</p>
                 </div>
-                
+               
                 <div>
                     <h3 class="text-lg font-bold mb-4">Liens Rapides</h3>
                     <ul class="space-y-2">
@@ -536,7 +602,7 @@
                         <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
-                
+               
                 <div>
                     <h3 class="text-lg font-bold mb-4">Nos Services</h3>
                     <ul class="space-y-2">
@@ -546,7 +612,7 @@
                         <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Sécurité Informatique</a></li>
                     </ul>
                 </div>
-                
+               
                 <div>
                     <h3 class="text-lg font-bold mb-4">Newsletter</h3>
                     <p class="text-gray-400 mb-4">Abonnez-vous à notre newsletter pour recevoir nos actualités.</p>
@@ -559,7 +625,7 @@
                     </form>
                 </div>
             </div>
-            
+           
             <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
                 <p>&copy; <span id="current-year">2025</span> Enigme Telecom. Tous droits réservés.</p>
             </div>
@@ -590,17 +656,17 @@
                     header.classList.remove('scrolled');
                 }
             });
-            
+           
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const closeMenuButton = document.getElementById('close-menu');
             const mobileMenu = document.getElementById('mobile-menu');
-            
+           
             function toggleMobileMenu() {
                 const isOpen = mobileMenu.classList.toggle('open');
                 mobileMenuButton.setAttribute('aria-expanded', isOpen);
                 document.body.style.overflow = isOpen ? 'hidden' : '';
             }
-            
+           
             mobileMenuButton.addEventListener('click', toggleMobileMenu);
             closeMenuButton.addEventListener('click', toggleMobileMenu);
 
@@ -609,26 +675,24 @@
                     toggleMobileMenu();
                 }
             });
-            
+           
             mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mobileMenu.classList.contains('open')) {
-                        toggleMobileMenu();
-                    }
-                });
+                link.addEventListener('click', toggleMobileMenu);
             });
-            
+           
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
-                    
+                   
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
+                        // The scroll-padding-top CSS property handles the offset,
+                        // but this JS scroll provides a smoother experience.
                         const headerHeight = document.getElementById('header').offsetHeight;
                         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                        
+                       
                         window.scrollTo({
                             top: targetPosition,
                             behavior: prefersReducedMotion ? 'auto' : 'smooth'
@@ -636,13 +700,13 @@
                     }
                 });
             });
-            
+           
             function animateCounter(element, finalValue, duration) {
                 if (prefersReducedMotion) {
                     element.textContent = finalValue.toLocaleString('fr-FR');
                     return;
                 }
-                
+               
                 let startValue = 0;
                 let startTime = null;
 
@@ -658,7 +722,7 @@
                 }
                 requestAnimationFrame(animation);
             }
-            
+           
             const statsSection = document.querySelector('#stats');
             if (statsSection) {
                 const statsObserver = new IntersectionObserver((entries, observer) => {
@@ -672,55 +736,53 @@
                         }
                     });
                 }, { threshold: 0.5 });
-                
+               
                 statsObserver.observe(statsSection);
             }
-            
+           
             const contactForm = document.getElementById('contact-form');
             const formStatus = document.getElementById('form-status');
-            
+           
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 formStatus.textContent = 'Envoi en cours...';
                 formStatus.className = 'text-blue-400';
-                
+               
                 setTimeout(() => {
                     formStatus.textContent = 'Merci ! Votre message a bien été envoyé.';
                     formStatus.className = 'text-green-400';
                     contactForm.reset();
-                    
+                   
                     setTimeout(() => {
                         formStatus.textContent = '';
                     }, 5000);
                 }, 1500);
             });
-            
+           
             if (!prefersReducedMotion) {
                 const container = document.getElementById('particles');
-                if(container) {
-                    const particleCount = 30;
-                    for (let i = 0; i < particleCount; i++) {
-                        const particle = document.createElement('div');
-                        particle.classList.add('particle');
-                        
-                        const size = Math.random() * 8 + 2;
-                        const posX = Math.random() * 100;
-                        const posY = Math.random() * 100;
-                        const delay = Math.random() * 5;
-                        const duration = Math.random() * 10 + 10;
-                        
-                        particle.style.width = `${size}px`;
-                        particle.style.height = `${size}px`;
-                        particle.style.left = `${posX}%`;
-                        particle.style.top = `${posY}%`;
-                        particle.style.animationDelay = `${delay}s`;
-                        particle.style.animationDuration = `${duration}s, 2s`;
-                        
-                        container.appendChild(particle);
-                    }
+                const particleCount = 30;
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                   
+                    const size = Math.random() * 8 + 2;
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    const delay = Math.random() * 5;
+                    const duration = Math.random() * 10 + 10;
+                   
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${posX}%`;
+                    particle.style.top = `${posY}%`;
+                    particle.style.animationDelay = `${delay}s`;
+                    particle.style.animationDuration = `${duration}s, 2s`;
+                   
+                    container.appendChild(particle);
                 }
             }
-            
+           
             const backToTopButton = document.getElementById('back-to-top');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 300) {
